@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:warsha_counter/core/utils/routes.dart';
+import 'package:warsha_counter/core/utils/themes/themes.dart';
 
 import 'core/router/app_router.dart';
 
@@ -23,9 +24,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouter.onGenerateRoute,
             initialRoute: RoutesManager.initialRoute,
-            theme: ThemeData(
-              fontFamily: "Amiri"
-            ),
+            theme: AppTheme.lightTheme,
             builder: (context, child) {
               final mediaQueryData = MediaQuery.of(context);
               final scaledMediaQueryData = mediaQueryData.copyWith(
