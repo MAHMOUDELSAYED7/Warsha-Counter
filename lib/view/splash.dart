@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _redirect() => Future.delayed(
-      Duration(seconds: 2), () => context.pushNamed(RoutesManager.login));
+      const Duration(seconds: 3), () => context.pushNamed(RoutesManager.login));
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Text(
                   "Counter\nألورشه",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 28.sp,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                  style: context.textTheme.bodyLarge?.copyWith(fontSize: 24.sp),
                 ).center(),
               ),
             ),
@@ -51,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 duration: Duration(microseconds: 500),
                 child: Text(
                   "أعتبرها سبلاش جامده",
-                  style: TextStyle(fontSize: 18),
+                  style: context.textTheme.bodyMedium,
                 ),
               ))
         ],
