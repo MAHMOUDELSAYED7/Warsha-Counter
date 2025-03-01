@@ -3,6 +3,6 @@ class RoutesManager {
 
   static const initialRoute = '/';
   static const login = '/login';
-  static const signUp = '/sign-up';
+  static const register = '/register';
   static const home = '/home';
 }
