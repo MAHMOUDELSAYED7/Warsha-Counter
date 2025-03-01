@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:warsha_counter/core/utils/routes.dart';
 
 import 'core/router/app_router.dart';
@@ -12,15 +13,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Warsha Counter',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      initialRoute: RoutesManager.initialRoute,
-      onGenerateRoute: AppRouter.onGenerateRoute,
-    );
+    return ScreenUtilInit(
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return MaterialApp(
+            title: "My Banking Guide",
+            locale: const Locale('ar'),
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: AppRouter.onGenerateRoute,
+            initialRoute: RoutesManager.initialRoute,
+            theme: ThemeData(
+              fontFamily: "Amiri"
+            ),
+            builder: (context, child) {
+              final mediaQueryData = MediaQuery.of(context);
+              final scaledMediaQueryData = mediaQueryData.copyWith(
+                textScaler: TextScaler.noScaling,
+              );
+              return MediaQuery(
+                data: scaledMediaQueryData,
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: child!,
+                ),
+              );
+            },
+          );
+        });
   }
 }
