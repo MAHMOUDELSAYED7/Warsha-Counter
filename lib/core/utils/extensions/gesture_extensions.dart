@@ -7,6 +7,10 @@ extension GestureExtensions on Widget {
         onTap: onTap,
         child: this,
       );
+  Widget onPressed(VoidCallback onPressed) => InkWell(
+        onTap: onPressed,
+        child: this,
+      );
 
   // Add an onLongPress handler to a widget
   Widget onLongPress(VoidCallback onLongPress) => GestureDetector(

@@ -34,11 +34,11 @@ class ElevatedButtonWidget extends StatelessWidget {
         onPressed: onPressed,
         child: loadingStatus == true
             ? const LoadingIndicator(
-                indicatorType: Indicator.ballClipRotateMultiple,
+                indicatorType: Indicator.orbit,
                 colors: [
                   ColorManager.white,
                 ],
-              )
+              ).withSize(width: 33, height: 33)
             : Text(
                 title ?? "",
               ));
