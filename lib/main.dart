@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:warsha_counter/core/utils/routes.dart';
+
+import 'core/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Warsha Counter',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      initialRoute: RoutesManager.initialRoute,
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }
