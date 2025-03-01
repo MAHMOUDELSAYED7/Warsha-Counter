@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "190652677767",
+    "project_id": "warsha-counter",
+    "storage_bucket": "warsha-counter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190652677767:android:48ee4b5ff4588595e44222",
+        "android_client_info": {
+          "package_name": "com.example.warsha_counter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs25oxCI5l8reXWlp8VGNEvSNpbzTdNdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
