@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warsha_counter/core/locator/locator.dart';
 import 'package:warsha_counter/core/router/page_transitions.dart';
+import 'package:warsha_counter/cubit/counter/counter_cubit.dart';
 import 'package:warsha_counter/view/login.dart';
 import 'package:warsha_counter/view/register.dart';
 
@@ -38,7 +39,12 @@ class AppRouter {
           ),
         );
       case RoutesManager.home:
-        return PageTransitionManager.materialSlideTransition(HomeScreen());
+        return PageTransitionManager.materialSlideTransition(
+          BlocProvider(
+            create: (_) => locator<CounterCubit>(),
+            child: HomeScreen(),
+          ),
+        );
 
       default:
         return null;

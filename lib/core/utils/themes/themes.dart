@@ -20,6 +20,7 @@ class AppTheme {
           ),
           textStyle: WidgetStatePropertyAll(TextStyle(
             fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
             fontFamily: FontManager.amiri,
           )),
         ),
@@ -38,7 +39,7 @@ class AppTheme {
           fontSize: 20.sp,
         ),
         backgroundColor: ColorManager.blue,
-        centerTitle: false,
+        centerTitle: true,
         scrolledUnderElevation: 0,
         iconTheme: const IconThemeData(color: ColorManager.white),
         elevation: 0,

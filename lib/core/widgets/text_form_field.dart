@@ -70,7 +70,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         isCollapsed: true,
         isDense: true,
         suffixIcon: widget.obscureText == true
-            ? _buildSuffixIcon(Icons.visibility, Icons.visibility_off)
+            ? _buildSuffixIcon(Icons.visibility_off, Icons.visibility)
             : null,
         hintText: widget.hintText,
         label: Text(widget.label ?? ""),
@@ -90,7 +90,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       },
       icon: Icon(isObscure == true ? icon1 : icon2),
       color: isObscure == true
-          ? ColorManager.blue.withValues(alpha: 0.5)
+          ? ColorManager.black.withValues(alpha: 0.5)
           : ColorManager.black,
       iconSize: 25.r,
     );
