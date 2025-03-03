@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _redirect() {
     Future<void>.delayed(
       const Duration(seconds: 3),
-      () => context.cubit<AuthStatusCubit>().checkAuthStatus(),
+      () => context.cubit<AuthStatusCubit>().checkIfClosed(),
     );
   }
 
@@ -32,9 +32,29 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthStatusCubit, AuthStatusState>(
         listener: (context, state) {
+          if (state is CloseApp) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              duration: Duration(seconds: 10),
+              content: Text(
+                ".التطبيق مغلق. حاول مرة أخرى لاحقًا",
+                textAlign: TextAlign.center,
+              ),
+            ));
+          }
+          if (state is OldVersion) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              duration: Duration(seconds: 10),
+              content: Text(
+                ".نسخة التطبيق قديمة. قم بالتحديث إلى أحدث إصدار",
+                textAlign: TextAlign.center,
+              ),
+            ));
+          }
+
           if (state is AuthStatusSignedIn) {
             context.popAndPushNamed(RoutesManager.home);
-          } else if (state is AuthStatusSignedOut) {
+          }
+          if (state is AuthStatusSignedOut) {
             context.popAndPushNamed(RoutesManager.login);
           }
         },
