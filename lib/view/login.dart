@@ -66,8 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 15.h),
             Text(
               "نحن في انتظارك في تطبيقنا سجل الان",
-              style: context.textTheme.bodyMedium
-                  ?.copyWith(color: ColorManager.blue),
+              style: context.textTheme.bodyMedium,
             ),
             SizedBox(height: 40.h),
             Form(
@@ -96,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 "نسيت كلمة السر؟",
                 style: context.textTheme.bodySmall?.copyWith(
                   color: ColorManager.blue,
+                  fontWeight: FontWeight.w600,
                   decoration: TextDecoration.underline,
                   decorationColor: ColorManager.blue,
                 ),
@@ -108,15 +108,16 @@ class _LoginScreenState extends State<LoginScreen> {
               listener: (context, state) {
                 if (state is LoginLoading) {
                   _isLoading = true;
-                } else {
-                  _isLoading = false;
                 }
                 if (state is LoginSuccess) {
+                  _isLoading = false;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
                   context.popAndPushNamed(RoutesManager.home);
-                } else if (state is LoginFailed) {
+                }
+                if (state is LoginFailed) {
+                  _isLoading = false;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
@@ -136,9 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Text(
                   'ليس لديك حساب',
-                  style: context.textTheme.bodySmall?.copyWith(
-                    color: ColorManager.blue,
-                  ),
+                  style: context.textTheme.bodySmall,
                 ),
                 const SizedBox(width: 2),
                 Row(
@@ -147,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       'أنشئ حساب جديد',
                       style: context.textTheme.bodySmall?.copyWith(
                         color: ColorManager.blue,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const RotatedBox(

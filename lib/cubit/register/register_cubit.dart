@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 import '../../firebase/auth_service.dart';
 
 part 'register_state.dart';
+
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(RegisterInitial());
 
@@ -14,7 +15,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     if (isClosed) return;
     emit(RegisterLoading());
     try {
-      final userCredential = await AuthService().signUp(fullName, email, password);
+      final userCredential = await AuthService()
+          .signUp(fullName: fullName, email: email, password: password);
       if (!isClosed) {
         emit(RegisterSuccess(
           userCredential.user,

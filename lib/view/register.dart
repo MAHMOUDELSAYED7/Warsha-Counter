@@ -67,8 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(height: 15.h),
             Text(
               "نحن سعداء بانضمامك إلينا، سجل الآن",
-              style: context.textTheme.bodyMedium
-                  ?.copyWith(color: ColorManager.blue),
+              style: context.textTheme.bodyMedium,
             ),
             SizedBox(height: 40.h),
             Form(
@@ -122,15 +121,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               listener: (context, state) {
                 if (state is RegisterLoading) {
                   _isLoading = true;
-                } else {
-                  _isLoading = false;
                 }
                 if (state is RegisterSuccess) {
+                  _isLoading = false;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
                   context.back();
-                } else if (state is RegisterFailed) {
+                }
+                if (state is RegisterFailed) {
+                  _isLoading = false;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
@@ -150,9 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 Text(
                   'لديك حساب بالفعل؟',
-                  style: context.textTheme.bodySmall?.copyWith(
-                    color: ColorManager.blue,
-                  ),
+                  style: context.textTheme.bodySmall,
                 ),
                 const SizedBox(width: 2),
                 Row(
@@ -161,7 +159,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       'تسجيل الدخول',
                       style: context.textTheme.bodySmall?.copyWith(
                         color: ColorManager.blue,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const RotatedBox(

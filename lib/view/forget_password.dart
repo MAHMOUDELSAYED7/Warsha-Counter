@@ -40,7 +40,7 @@ class _ForgetPasswordBottomSheetWidgetState
       padding: EdgeInsets.only(
         left: 16.0,
         right: 16.0,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 16.0,
+        bottom: context.viewInsetsBottom + 16.0,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -49,16 +49,15 @@ class _ForgetPasswordBottomSheetWidgetState
           Center(
             child: Text(
               'نسيت كلمة المرور',
-              style: context.textTheme.bodyLarge,
+              style: context.textTheme.bodyLarge?.copyWith(
+                  color: ColorManager.blue, fontWeight: FontWeight.w800),
             ),
           ),
           SizedBox(height: 20.h),
           Text(
             'من فضلك أدخل بريدك الإلكتروني، وسنرسل لك رابط تأكيد لإعادة تعيين كلمة المرور.',
             textAlign: TextAlign.center,
-            style: context.textTheme.bodyMedium?.copyWith(
-              color: ColorManager.blue,
-            ),
+            style: context.textTheme.bodyMedium,
           ),
           SizedBox(height: 40.h),
           Form(
@@ -110,6 +109,7 @@ void showForgetPasswordBottomSheet(BuildContext context) {
     enableDrag: true,
     barrierLabel: 'Forget Password',
     elevation: 10,
+    backgroundColor: ColorManager.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(20),
