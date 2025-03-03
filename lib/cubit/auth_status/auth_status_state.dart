@@ -20,3 +20,9 @@ class AuthStatusError extends AuthStatusState {
 
   AuthStatusError(this.message);
 }
+
+class OpenApp extends AuthStatusState {}
+
+class CloseApp extends AuthStatusState {}
+
+class OldVersion extends AuthStatusState {}
